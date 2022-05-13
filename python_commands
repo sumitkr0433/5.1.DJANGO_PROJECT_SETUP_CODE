@@ -57,3 +57,46 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 python manage.py collectstatic
 120 static files copied to '/home/admin1/Django_project/school/assets'.
+=========================================================================================================================================================
+Bootstrap setting
+
+pipenv install django-crispy-forms== 1.7.2
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Code
+# newspaper_project/settings.py
+INSTALLED_APPS = [
+# Local
+'users.apps.UsersConfig',
+'pages.apps.PagesConfig',
+#3rd Party
+'crispy_forms', # new bootstrap 
+'django.contrib.admin',
+'django.contrib.auth',
+'django.contrib.contenttypes',
+'django.contrib.sessions',
+'django.contrib.messages',
+'django.contrib.staticfiles',
+]
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Add this line to setting.py
+Code
+# newspaper_project/settings.py
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Load cripsy form in template file
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Now in our signup.html template we can quickly use crispy forms. First we load crispy_forms_tags at the top and 
+then swap out {{ form.as_p }} for {{ form|crispy}} .
+Code
+<!-- templates/signup.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Sign Up{% endblock title%}
+{% block content %}
+<h2>Sign up</h2>
+<form method="post">
+{% csrf_token %}
+{{ form|crispy }}   ####bootstrap form
+<button type="submit">Sign Up</button>
+</form>
+{% endblock content %}
