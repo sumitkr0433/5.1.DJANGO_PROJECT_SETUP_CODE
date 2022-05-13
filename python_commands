@@ -4,3 +4,56 @@ pipenv install django==2.1
 pipenv shell
 django-admin startproject finesauces_project .
 django-admin startpp app_name
+========================================================================================================================================================
+mkdir env
+virtualenv env/bookmarks
+source env/bookmarks/bin/activate
+pip install Django==2.0.5
+django-admin startproject bookmarks
+django-admin startapp account
+========================================================================================================================================================
+mkdir django_social_website
+cd django_social_website
+pipenv install django==2.1
+pipenv shell
+django-admin startproject bookmarks .
+django-admin startapp account
+======================================================================================================================================================
+INSTALLED_APPS = [
+    'account.apps.AccountConfig',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+====================================================================================================================================================
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+=====================================================================================================================================================
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+=========================================================================================================================================================
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+python manage.py collectstatic
+120 static files copied to '/home/admin1/Django_project/school/assets'.
