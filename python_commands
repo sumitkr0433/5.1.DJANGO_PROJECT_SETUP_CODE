@@ -1,0 +1,6 @@
+mkdir auth
+cd auth
+pipenv install django==2.1
+pipenv shell
+django-admin startproject finesauces_project .
+django-admin startpp app_name
