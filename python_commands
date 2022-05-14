@@ -220,4 +220,15 @@ def add(request):
     res = val1 + val2
 
     return render(request, "result.html", {"result": res})
-    
+ ======================================================================================================================================================
+python -m django --version
+python manage.py runserver 8080
+$ python manage.py runserver 0:8000
+0--ip address
+8080 is port address
+$ python manage.py sqlmigrate polls 0001
+$ python manage.py migrate
+Run python manage.py makemigrations to create migrations for those changes
+• Run python manage.py migrate to apply those changes to the database.
+python manage.py shell
+0 is a shortcut for 0.0.0.0. Full docs for the development server can be found in the runserver reference.
