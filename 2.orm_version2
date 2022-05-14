@@ -1,0 +1,1 @@
+a_list = Article.objects.filter(pub_date__year=year)
