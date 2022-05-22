@@ -261,3 +261,109 @@ Message framwork
         $("#error_show").hide();
     }, 1200);
 </script>
+========================================================================================================================================================
+Static file uploading and media file:--
+In project urls.py
+========================================================================================================================================================
+from django.contrib import admin
+from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('', include('login.urls')),
+    path('admin/', admin.site.urls),
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+setting.py
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static_files')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+LOGIN_URL='login'
+LOGIN_REDIRECT_URL ='roles_dashboard'
+LOGOUT_REDIRECT_URL ='login'
+------------------------------------------------------------------------------------------------------------------------------------------
+#Bootstrap 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+-----------------------------------------------------------------------------------------------------------------------------------------
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'sumitpatna2017@gmail.com'
+EMAIL_HOST_PASSWORD = 'Hub_123456789'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+===============================================================================================================================================
+STATIC_URL = '/static/'
+AUTH_USER_MODEL="student_management_app.CustomUser"
+AUTHENTICATION_BACKENDS=['student_management_app.EmailBackEnd.EmailBackEnd']
+
+EMAIL_BACKEND="django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH=os.path.join(BASE_DIR,"sent_mails")
+
+# EMAIL_HOST="smtp.gmail.com"
+# EMAIl_PORT=587
+# EMAIL_HOST_USER="GMAIL_EMAIL"
+# EMAIL_HOST_PASSWORD="GMAIL PASSWORD"
+# EMAIL_USE_TLS=True
+# DEFAULT_FROM_EMAIL="Student management System <GMAIl_EMAIL>"
+#
+
+#Enable Only Making Project Live on Heroku
+# STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+# import dj_database_url
+# prod_db=dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
+#HEROKU LIVE PROJECT LINK
+#ALLOWED_HOSTS = ["studentmanagementsystem22.herokuapp.com"]
+ALLOWED_HOSTS = ["*"]
+
+MEDIA_URL="/media/"
+MEDIA_ROOT=os.path.join(BASE_DIR,"media")
+
+STATIC_URL="/static/"
+STATIC_ROOT=os.path.join(BASE_DIR,"static")
+
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'student_management_app',
+]
+
+MIDDLEWARE = [
+    #===Enable Only Making Project Live on Heroku==
+     #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'student_management_app.LoginCheckMiddleWare.LoginCheckMiddleWare'
+]
+===============================================================================================================================================
+gunicorn
+create file with profile name add this 
+----------------------------------------------------------------------------------------------------------------------------------------------
+web: gunicorn student_management_system.wsgi --log-file -
+================================================================================================================================================
+git init
+heroku git:remote projectname
+git add .
+git commit -m "Initial Commit"
+git push heroku master
+heroku run python manage.py makemigrations
+heroku run python manage.py migrate
+
+
