@@ -365,5 +365,6 @@ git commit -m "Initial Commit"
 git push heroku master
 heroku run python manage.py makemigrations
 heroku run python manage.py migrate
-
+===============================================================================================================================================
+print(request.META) to see request header in django 2.0
 
