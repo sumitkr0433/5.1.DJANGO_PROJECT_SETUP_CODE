@@ -82,6 +82,8 @@ Now in our signup.html template we can quickly use crispy forms. First we load c
 Code
 <!-- templates/signup.html -->
 {% extends 'base.html' %}
+{% include 'include/navigation_bar.html' %}
+{% include 'include/admin_side_bar.html' %}
 {% load crispy_forms_tags %}
 {% block title %}Sign Up{% endblock title%}
 {% block content %}
