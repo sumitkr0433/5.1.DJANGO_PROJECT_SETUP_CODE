@@ -1,0 +1,459 @@
+pip install django
+python -m django --version
+django-admin startproject mysite
+python manage.py runserver
+django-admin startproject textutils
+python manage.py runserver
+from . import views
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('about/', views.about, name='about'),
+]
+from django.http import HttpResponse
+def index(request):
+    return HttpResponse('''Harry  Django CodeWithHarry''')
+def about(request):
+    return HttpResponse("About Harry Bhai")
+=====================================================================================================================================================
+from django.contrib import admin
+from django.urls import path
+from . import views
+# Code for video 6
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('about/', views.about, name='about'),
+]
+# views.py
+# I have created this file - Harry
+from django.http import HttpResponse
+
+# Code for video: 6
+def index(request):
+    return HttpResponse('''Django CodeWithHarry''')
+
+def about(request):
+    return HttpResponse("About Harry Bhai")
+=====================================================================================================================================================
+from django.http import HttpResponse
+def index(request):
+    return HttpResponse("Home")
+def removepunc(request):
+    return HttpResponse("remove punc")
+path('removepunc', views.removepunc, name='rempun'),
+def capfirst(request):
+    return HttpResponse("capitalize first")
+path('capitalizefirst', views.capfirst, name='capfirst')
+def newlineremove(request):
+    return HttpResponse("capitalize first")
+ path('newlineremove', views.newlineremove, name='newlineremove')
+ path('newlineremove', views.newlineremove, name='newlineremove')
+ path('newlineremove', views.newlineremove, name='newlineremove')
+ path('newlineremove', views.newlineremove, name='newlineremove')
+ def spaceremove(request):
+    return HttpResponse("space remover")
+  path('newlineremove', views.newlineremove, name='newlineremove')
+  def spaceremove(request):
+    return HttpResponse("space remover")
+  path('spaceremove', views.spaceremove, name='spaceremove')
+  def charcount(request):
+    return HttpResponse("charcount ")
+  path('charcount', views.charcount, name='charcount')
+  ======================================================================================================================================================
+from django.contrib import admin
+from django.urls import path
+from . import views
+# Code for video 7
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('removepunc', views.removepunc, name='rempun'),
+    path('capitalizefirst', views.capfirst, name='capfirst'),
+    path('newlineremove', views.newlineremove, name='newlineremove'),
+    path('spaceremove', views.spaceremove, name='spaceremove'),
+    path('charcount', views.charcount, name='charcount'),
+
+]
+#views.py
+# I have created this file - Harry
+from django.http import HttpResponse
+
+# Code for video 7
+def index(request):
+    return HttpResponse("Home")
+def removepunc(request):
+    return HttpResponse("remove punc")
+def capfirst(request):
+    return HttpResponse("capitalize first"
+def newlineremove(request):
+    return HttpResponse("capitalize first")
+def spaceremove(request):
+    return HttpResponse("space remover")
+def charcount(request):
+    return HttpResponse("charcount ")
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': ["templates"],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            # ... some options here ...
+        },
+    },
+]
+=======================================================================================================================================================
+from django.shortcuts import render
+def index(request):
+    return render(request, 'index.html')
+======================================================================================================================================================
+# views.py
+# I have created this file - Harry
+from django.http import HttpResponse
+from django.shortcuts import render
+
+
+def index(request):
+    return render(request, 'index.html')
+
+    # return HttpResponse("Home")
+
+def removepunc(request):
+    return HttpResponse("remove punc")
+
+def capfirst(request):
+    return HttpResponse("capitalize first")
+
+def newlineremove(request):
+    return HttpResponse("newline remove first")
+
+
+def spaceremove(request):
+    return HttpResponse("space remover back")
+
+def charcount(request):
+    return HttpResponse("charcount ")
+
+# urls.py
+"""textutils URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/2.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('removepunc', views.removepunc, name='rempun'),
+    path('capitalizefirst', views.capfirst, name='capfirst'),
+    path('newlineremove', views.newlineremove, name='newlineremove'),
+    path('spaceremove', views.spaceremove, name='spaceremove'),
+    path('charcount', views.charcount, name='charcount'),
+
+]
+=======================================================================================================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template is working</title>
+</head>
+<body>
+<h1>Welcome to the text analyazer. Enter your text below</h1>
+<form action='/removepunc' method='get'>
+    <textarea name='text' style='margin: 0px; width: 721px; height: 93px;'></textarea>
+    <button type='submit'> Analyze Text</button>
+</form>
+</body>
+</html>
+========================================================================================================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template is working</title>
+</head>
+<body>
+<h1>Welcome to the text analyazer. Enter your text below</h1>
+<form action='/removepunc' method='get'>
+    <textarea name='text' style='margin: 0px; width: 721px; height: 93px;'></textarea>
+ 
+</form>
+</body>
+</html>
+<button type='submit'> Analyze Text</button>
+========================================================================================================================================================
+<form action='/removepunc' method='get'>
+    <textarea name='text' style='margin: 0px; width: 721px; height: 93px;'></textarea>
+    <button type='submit'> Analyze Text</button>
+</form>
+========================================================================================================================================================
+
+# views.py
+# I have created this file - Harry
+from django.http import HttpResponse
+from django.shortcuts import render
+
+
+def index(request):
+    return render(request, 'index.html')
+
+    # return HttpResponse("Home")
+
+def removepunc(request):
+    #Get the text
+    djtext = request.GET.get('text', 'default')
+    print(djtext)
+    #Analyze the text
+    return HttpResponse("remove punc")
+
+def capfirst(request):
+    return HttpResponse("capitalize first")
+
+def newlineremove(request):
+    return HttpResponse("newline remove first")
+
+
+def spaceremove(request):
+    return HttpResponse("space remover back")
+
+def charcount(request):
+    return HttpResponse("charcount ")
+
+# urls.py
+"""textutils URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/2.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from . import views
+
+# Code for video 6
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('', views.index, name='index'),
+#     path('about/', views.about, name='about'),
+#
+# ]
+
+# Code for video 7
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('removepunc', views.removepunc, name='rempun'),
+    path('capitalizefirst', views.capfirst, name='capfirst'),
+    path('newlineremove', views.newlineremove, name='newlineremove'),
+    path('spaceremove', views.spaceremove, name='spaceremove'),
+    path('charcount', views.charcount, name='charcount'),
+
+]
+=========================================================================================================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template is working</title>
+</head>
+<body>
+<h1>Welcome to the text analyazer. Enter your text below</h1>
+<form action='/removepunc' method='get'>
+    <textarea name='text' style='margin: 0px; width: 721px; height: 93px;'></textarea>
+ 
+</form>
+</body>
+</html>
+=======================================================================================================================================================
+from django.contrib import admin
+from django.urls import path
+from . import views
+
+urlpatterns = [
+   path('admin/', admin.site.urls),
+   path('', views.index, name='index'),
+   path('analyze', views.analyze, name='analyze')
+]
+========================================================================================================================================================
+ def analyze(request):
+   #Get the text
+   djtext = request.GET.get('text', 'default')
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+<input type="checkbox" name="removepunc"> Remove Punctuations<br>
+========================================================================================================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analyzing Your Text...</title>
+</head>
+<body>
+<h1>Your Analyzed Text - {{ purpose }}</h1>
+<p>
+    {{ analyzed_text }}
+</p>
+</body>
+</html>
+=========================================================================================================================================================
+def analyze(request):
+    # Get the text
+    djtext = request.GET.get('text', 'default')
+    analyzed=djtext
+    params = {'purpose': "Removing Punctuations", 'analyzed_text': analyzed}
+    return render(request,'analyze.html',params)
+========================================================================================================================================================
+def analyze(request):
+    # Get the text
+    djtext = request.GET.get('text', 'default')
+    removepunc=request.GET.get('removepunc','off')
+    if removepunc == "on":
+        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+        analyzed = ""
+        for char in djtext:
+            if char not in punctuations:
+                analyzed = analyzed + char
+        params = {'purpose': 'Removed Punctuations', 'analyzed_text': analyzed}
+        return render(request, 'analyze.html', params)
+
+    else:
+        return HttpResponse('Error')
+========================================================================================================================================================
+
+
+# Views.py
+# I have created this file - Harry
+from django.http import HttpResponse
+from django.shortcuts import render
+
+
+def index(request):
+    return render(request, 'index.html')
+
+    # return HttpResponse("Home")
+
+
+
+def analyze(request):
+    #Get the text
+    djtext = request.GET.get('text', 'default')
+
+    # Check checkbox values
+    removepunc = request.GET.get('removepunc', 'off')
+    fullcaps = request.GET.get('fullcaps', 'off')
+    newlineremover = request.GET.get('newlineremover', 'off')
+    extraspaceremover = request.GET.get('extraspaceremover', 'off')
+
+    #Check which checkbox is on
+    if removepunc == "on":
+        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+        analyzed = ""
+        for char in djtext:
+            if char not in punctuations:
+                analyzed = analyzed + char
+        params = {'purpose':'Removed Punctuations', 'analyzed_text': analyzed}
+        return render(request, 'analyze.html', params)
+
+    else:
+        return HttpResponse("Error")
+# def capfirst(request):
+#     return HttpResponse("capitalize first")
+# def newlineremove(request):
+#     return HttpResponse("newline remove first")
+# def spaceremove(request):
+#     return HttpResponse("space remover back")
+# def charcount(request):
+#     return HttpResponse("charcount ")
+=======================================================================================================================================================
+from django.contrib import admin
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('analyze', views.analyze, name='analyze')
+
+
+]
+=======================================================================================================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Utils</title>
+</head>
+<body>
+<h1>Welcome to the text analyzer. Enter your text below</h1>
+<form action='/analyze' method='get'>
+    <textarea name='text' style='margin: 0px; width: 721px; height: 93px;'></textarea><br>
+
+    <input type="checkbox" name="removepunc"> Remove Punctuations<br>
+    <button type='submit'> Analyze Text</button>
+
+</form>
+</body>
+</html>
+=========================================================================================================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analyzing Your Text...</title>
+</head>
+<body>
+<h1>Your Analyzed Text - {{ purpose }}</h1>
+<p>
+    {{ analyzed_text }}
+</p>
+</body>
+</html>
+========================================================================================================================================================
+def ex1(request):
+    s=''' Navigation Bar <br> </h2>
+    <a href= "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9" > Django Code With Harry Bhai </a><br>
+    <a href="https://www.facebook.com/"> Facebook </a> <br>
+    <a href="https://www.flipkart.com/"> Flipkart </a> <br>
+    <a href="https://www.hindustantimes.com/"> News </a> <br>
+    <a href="https://www.google.com/"> Google </a> <br>
+    reutrn HttpResponse(s)
+path('ex1', views.ex1, name="ex1")
+======================================================================================================================================================
+# Views.py 
+# I have created this file - Harry
+from django.http import HttpResponse
+from django.shortcuts import render
+def index(request):
+    return render(request, 'index.html')
+    # return HttpResponse("Home")
+def ex1(request):
+    sites = ['''<h1>For Entertainment </h1><a href = "https://www.youtube.com" >youtube video</a>''',
+             '''<h1>For Interaction </h1><a href = "https://www.facebook.com" >Facebook</a>''',
+             '''<h1>For Insight   </h1><a href = "https://www.ted.com/talks" >Ted Talk</a>''',
+             '''<h1>For Internship   </h1><a href="https://internshala.com" >Intenship</a>''',
+             ]
+    return HttpResponse((sites))
+========================================================================================================================================================
+Adding More Features To TextUtils Website | Python Django Tutorials In Hindi #12
