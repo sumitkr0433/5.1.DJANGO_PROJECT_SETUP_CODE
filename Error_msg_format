@@ -1,0 +1,60 @@
+Type of message
+
+
+
+from django.contrib import messages
+
+Sample function
+def adding_datamodel_submodel(request):
+    data=DataModelDomain.objects.all()
+    context = {
+        'data':data,
+    }
+    if (request.method == 'POST'):
+        model_name=request.POST.get('data_model_name')
+        model = DataModelDomain.objects.get(id=model_name)
+        submodel=request.POST.get('sub_model_name')
+        a=DataModelDomainList.objects.filter(all_list=submodel)
+        print("hghgh",a)
+        if DataModelDomainList.objects.filter(all_list=submodel):
+            print("hello")
+            messages.info(request,'Already Datamodel Exist')
+            return redirect('adding_subdatamodel')
+        else:
+            parent_data=DataModelDomain.objects.get(name=model)
+            print(parent_data)
+            DataModelDomainList.objects.create(parent=parent_data,all_list=submodel)
+            messages.success(request, 'Datamodel Added')
+            return render(request,'addingdatasubmodel.html',context)
+    else:
+        return render(request,'addingdatasubmodel.html',context)
+ =======================================================================================================================================================
+template adding
+ <div class="col-md-8 col-md-offset-2">
+               {% if messages %}
+               {% for message in messages %}
+               {% if message.tags == 'success' %}
+                   <div class="alert alert-success alert-dismissible col-sm-10" role="alert" id="error_show">
+                         {{message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     {% endif %}
+                     {% endfor %}
+                        {% endif %}
+                    </div>
+<div class="col-md-8 col-md-offset-2">
+               {% if messages %}
+               {% for message in messages %}
+               {% if message.tags == 'info' %}
+                   <div class="alert alert-success alert-dismissible col-sm-10" role="alert" id="error_show">
+                         {{message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     {% endif %}
+                     {% endfor %}
+                        {% endif %}
+                    </div>
